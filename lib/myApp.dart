@@ -14,10 +14,10 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
+  MyHomePage({Key key, @required this.title}) : super(key: key);
+
   final String title;
   final _url = 'https://icons8.com';
-
-  MyHomePage({Key key, @required this.title}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -45,12 +45,18 @@ class MyHomePage extends StatelessWidget {
             ListTile(
               title: Text('About'),
               onTap: () {
-                showAboutDialog(context: context, children: <Widget>[
-                  Padding(
+                showAboutDialog(
+                  context: context,
+                  children: <Widget>[
+                    Padding(
                       padding: EdgeInsets.only(top: 15),
-                      child: TextButton(child: Text('https://icons8.com'), onPressed: _launchURL,),
-                  )
-                ], );
+                      child: TextButton(
+                        child: Text('https://icons8.com'),
+                        onPressed: _launchURL,
+                      ),
+                    )
+                  ],
+                );
               },
             ),
           ],
@@ -59,6 +65,7 @@ class MyHomePage extends StatelessWidget {
     );
   }
 
-  void _launchURL() async =>
-      await canLaunch(_url) ? await launch(_url) : throw 'Could not launch $_url';
+  void _launchURL() async => await canLaunch(_url)
+      ? await launch(_url)
+      : throw 'Could not launch $_url';
 }
