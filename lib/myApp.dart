@@ -65,7 +65,13 @@ class MyHomePage extends StatelessWidget {
     );
   }
 
-  void _launchURL() async => await canLaunch(_url)
-      ? await launch(_url)
-      : throw 'Could not launch $_url';
+  void _launchURL() async {
+    try {
+      await canLaunch(_url)
+          ? await launch(_url)
+          : throw 'Could not launch $_url';
+    } catch (e) {
+      print('caught error: $e');
+    }
+  }
 }
