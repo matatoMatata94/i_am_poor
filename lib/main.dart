@@ -6,7 +6,26 @@ void main() {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         drawer: Drawer(
-          child: Center(child: Text('test')),
+          child: ListView(
+            children: [
+              DrawerHeader(
+                child: Text('Menu'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) => AlertDialog(
+                      title: Text('About'),
+                      content: Text(
+                          '<a target="_blank" href="https://icons8.com/icon/kappWljBsia5/brankrupt">Brankrupt</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>'),
+                    ),
+                  );
+                },
+                child: Text('About'),
+              ),
+            ],
+          ),
         ),
         body: Center(
           child: Image(
